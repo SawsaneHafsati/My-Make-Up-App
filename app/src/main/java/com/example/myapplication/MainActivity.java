@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        showList();
+
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -31,5 +33,9 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new ListAdapter(input);
         recyclerView.setAdapter(mAdapter);
     }
+
+    private void showList() {
+        //TODO Afficher la liste
     }
+}
 }
