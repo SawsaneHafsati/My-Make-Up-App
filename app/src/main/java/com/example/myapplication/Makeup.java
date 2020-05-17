@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-public class makeup {
+public class Makeup {
 
     private String name;
     private String brand;
