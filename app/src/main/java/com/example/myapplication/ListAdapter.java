@@ -1,16 +1,21 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<Makeup> values;
+    private MainActivity activity;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -19,6 +24,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         // each data item is just a string in this case
         public TextView txtHeader;
         public TextView txtFooter;
+        public ImageView icon;
         public View layout;
 
         public ViewHolder(View v) {
@@ -26,6 +32,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
             txtFooter = (TextView) v.findViewById(R.id.secondLine);
+            icon = v.findViewById(R.id.icon);
         }
     }
 
@@ -65,12 +72,18 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         holder.txtHeader.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                remove(position);
+                Intent intent = new Intent(v.getContext(), DetailActivity.class);
+                intent.putExtra("name", currentMakeup.getName());
+                intent.putExtra("price", currentMakeup.getPrice());
+                intent.putExtra("brand", currentMakeup.getBrand());
+                intent.putExtra("color", currentMakeup.getColor());
+                intent.putExtra("imgURL", currentMakeup.getImgURL());
+                v.getContext().startActivity(intent);
             }
         });
-        holder.txtFooter.setText(currentMakeup.getBrand());
+        holder.txtFooter.setText(currentMakeup.getPrice());
+        Picasso.get().load(currentMakeup.getImgURL()).into(holder.icon);
     }
-
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
