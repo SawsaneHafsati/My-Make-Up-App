@@ -2,8 +2,10 @@ package com.example.myapplication.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,5 +32,10 @@ public class DetailActivity extends AppCompatActivity {
         color.setText(intent.getStringExtra("color"));
 
         Picasso.get().load(intent.getStringExtra("imgURL")).into(image);
+
+    }
+
+    public void backBtnDetail(View v) {
+        onBackPressed();
     }
 }
