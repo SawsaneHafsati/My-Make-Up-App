@@ -1,4 +1,6 @@
-package com.example.myapplication;
+package com.example.myapplication.api;
+
+import com.example.myapplication.model.Makeup;
 
 import java.util.List;
 

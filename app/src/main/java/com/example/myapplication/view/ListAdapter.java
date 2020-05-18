@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.view;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.R;
+import com.example.myapplication.model.Makeup;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
