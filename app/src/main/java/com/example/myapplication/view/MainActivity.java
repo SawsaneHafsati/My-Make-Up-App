@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.myapplication.Singletons;
 import com.example.myapplication.api.MakeupAPI;
 import com.example.myapplication.R;
 import com.example.myapplication.controller.MainController;
@@ -38,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SharedPreferences sp = getSharedPreferences("application_makeup", Context.MODE_PRIVATE);
-        Gson gson = new GsonBuilder().setLenient().create();
+        SharedPreferences sp = Singletons.getSharedPreferences(getApplicationContext());
+        Gson gson = Singletons.getGson();
         controller = new MainController(this, gson, sp);
         controller.onStart();
     }

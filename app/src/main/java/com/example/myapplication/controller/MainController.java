@@ -3,7 +3,7 @@ package com.example.myapplication.controller;
 import android.content.SharedPreferences;
 
 import com.example.myapplication.Constants;
-import com.example.myapplication.api.MakeupAPI;
+import com.example.myapplication.Singletons;
 import com.example.myapplication.model.Makeup;
 import com.example.myapplication.view.MainActivity;
 import com.google.gson.Gson;
@@ -15,8 +15,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainController {
     SharedPreferences sharedPreferences;
@@ -47,14 +45,7 @@ public class MainController {
     }
 
     public void makeAPICall() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        MakeupAPI makeupAPI = retrofit.create(MakeupAPI.class);
-
-        Call<List<Makeup>> call = makeupAPI.getMakeup();
+        Call<List<Makeup>> call = Singletons.getMakeupAPI().getMakeup();
 
         call.enqueue(new Callback<List<Makeup>>() {
             @Override
