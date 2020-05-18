@@ -39,9 +39,9 @@ git clone https://github.com/SawsaneHafsati/MyApp.git
 ## Liste des produits
 Tous les produits stockés par le serveur (une "Fake" API REST) sont affichés sur l'accueil de l'application.
 > Quand la liste est chargée avec succès elle est stockée en cache pour être réutilisée en cas de problèmes de connexion.
-<div align="center"><img src="readme_img/list.png"></div>
+<div align="center"><img src="readme_img/list.png" width="500px"></div>
 
 ## Détail d'un produit
 En cliquant sur un produit on peut accéder à son détail.
 > Des informations supplémentaires apparaissent comme la marque ou la couleur du produit.
-<div align="center"><img src="readme_img/detail.png"></div>
+<div align="center"><img src="readme_img/detail.png" width="500px" ></div>
