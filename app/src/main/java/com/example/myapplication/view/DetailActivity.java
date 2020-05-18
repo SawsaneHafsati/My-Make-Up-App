@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,7 +17,6 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        // Récupération des données de l'intent et insertion dans les labels correspondants
         Intent intent = getIntent();
         TextView name = findViewById(R.id.detailName);
         TextView price = findViewById(R.id.detailPrice);
@@ -32,7 +30,6 @@ public class DetailActivity extends AppCompatActivity {
         color.setText(intent.getStringExtra("color"));
 
         Picasso.get().load(intent.getStringExtra("imgURL")).into(image);
-
     }
 
     public void backBtnDetail(View v) {

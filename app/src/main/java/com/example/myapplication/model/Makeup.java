@@ -1,7 +1,11 @@
 package com.example.myapplication.model;
 
+/**
+ * Modèle représentant un Makeup
+ * Chaque makeup est représenté par un nom, une marque, un prix, une couleur et une URL d'image
+ * Chaque attribut a son getter
+ */
 public class Makeup {
-
     private String name;
     private String brand;
     private String price;

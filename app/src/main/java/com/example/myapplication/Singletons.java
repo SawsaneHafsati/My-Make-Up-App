@@ -10,6 +10,9 @@ import com.google.gson.GsonBuilder;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * Méthode définissant tous les singletons de l'application (principe d'injection de dépendances)
+ */
 public class Singletons {
     private static Gson gsonInstance;
     private static SharedPreferences spInstance;

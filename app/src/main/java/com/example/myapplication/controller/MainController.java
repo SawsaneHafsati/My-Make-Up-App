@@ -16,17 +16,29 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Controleur principal gérant les interactions de l'utilisateur
+ */
 public class MainController {
     SharedPreferences sharedPreferences;
     Gson gson;
     private MainActivity view;
 
+    /**
+     * Constructeur du controleur
+     * @param mainActivity Vue à laquelle le controleur est lié
+     * @param gson Objet gson à utiliser pour gérer les conversions en JSON
+     * @param sharedPreferences Objet SharedPreference à utiliser pour stocker et lire le cache
+     */
     public MainController(MainActivity mainActivity, Gson gson, SharedPreferences sharedPreferences) {
         this.view = mainActivity;
         this.gson = gson;
         this.sharedPreferences = sharedPreferences;
     }
 
+    /**
+     * Méthode gérant le lancement de l'application
+     */
     public void onStart() {
         List<Makeup> makeupList = getDataFromCache();
         if(makeupList != null) {
@@ -36,6 +48,10 @@ public class MainController {
         }
     }
 
+    /**
+     * Méthode sauvegardant la liste des Makeup en cache
+     * @param makeupList
+     */
     private void saveList(List<Makeup> makeupList) {
         String jsonString = gson.toJson(makeupList);
         sharedPreferences
@@ -44,6 +60,9 @@ public class MainController {
                 .apply();
     }
 
+    /**
+     * Méthode gérant les appels au serveur
+     */
     public void makeAPICall() {
         Call<List<Makeup>> call = Singletons.getMakeupAPI().getMakeup();
 
@@ -66,6 +85,10 @@ public class MainController {
         });
     }
 
+    /**
+     * Méthode retournant le contenu du cache
+     * @return liste de Makeup
+     */
     private List<Makeup> getDataFromCache() {
         String jsonMakeup = sharedPreferences.getString(Constants.JSON_KEY, null);
 
@@ -75,9 +98,5 @@ public class MainController {
             Type listType = new TypeToken<List<Makeup>>(){}.getType();
             return gson.fromJson(jsonMakeup, listType);
         }
-    }
-
-    public void onItemClick(Makeup makeup) {
-
     }
 }
